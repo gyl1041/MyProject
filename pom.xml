@@ -5,11 +5,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>GYL</groupId>
-  <artifactId>SSM</artifactId>
+  <artifactId>MyProject</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>SSM Maven Webapp</name>
+  <name>MyProject Maven Webapp</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -178,7 +178,7 @@
   </dependencies>
 
   <build>
-    <finalName>SSM</finalName>
+    <finalName>MyProject</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
