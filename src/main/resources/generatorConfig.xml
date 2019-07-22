@@ -23,7 +23,7 @@
 
         <!--jdbc的数据库连接-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://49.234.96.28:3306/test"
+                        connectionURL="jdbc:mysql://49.234.96.28:3306/test1"
                         userId="root"
                         password="GYL!@#$1234.">
         </jdbcConnection>
@@ -63,7 +63,7 @@
             <!-- 针对 oracle 数据库的一个配置，是否把 schema 作为字包名 -->
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
-        <table tableName="user_t" domainObjectName="UserT"
+        <table tableName="u_role" domainObjectName="URole"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">

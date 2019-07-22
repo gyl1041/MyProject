@@ -10,14 +10,14 @@
                         http://www.springframework.org/schema/mvc
                         http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
     <!-- 自动扫描 -->
-    <context:component-scan base-package="com.cn.service" />
+    <context:component-scan base-package="com.cn.service"/>
     <!-- 引入配置文件 -->
     <bean id="propertyConfigurer"
           class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="location" value="classpath:jdbc.properties" />
+        <property name="location" value="classpath:jdbc.properties"/>
     </bean>
 
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+    <bean id="testDataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="${driver}" />
         <property name="url" value="${url}" />
@@ -33,6 +33,33 @@
         <property name="minIdle" value="${minIdle}"></property>
         <!-- 获取连接最大等待时间 -->
         <property name="maxWait" value="${maxWait}"></property>
+    </bean>
+    <bean id="test1DataSource" class="org.apache.commons.dbcp.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${driver}" />
+        <property name="url" value="${url2}" />
+        <property name="username" value="${username}" />
+        <property name="password" value="${password}" />
+        <!-- 初始化连接大小 -->
+        <property name="initialSize" value="${initialSize}"></property>
+        <!-- 连接池最大数量 -->
+        <property name="maxActive" value="${maxActive}"></property>
+        <!-- 连接池最大空闲 -->
+        <property name="maxIdle" value="${maxIdle}"></property>
+        <!-- 连接池最小空闲 -->
+        <property name="minIdle" value="${minIdle}"></property>
+        <!-- 获取连接最大等待时间 -->
+        <property name="maxWait" value="${maxWait}"></property>
+    </bean>
+
+    <bean id="dataSource" class="com.cn.util.DynamicDataSource">
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <entry key="testDataSource" value-ref="testDataSource"></entry>
+                <entry key="test1DataSource" value-ref="test1DataSource"></entry>
+            </map>
+        </property>
+        <property name="defaultTargetDataSource" ref="testDataSource"/>
     </bean>
 
     <!-- spring和MyBatis完美整合，不需要mybatis的配置映射文件 -->
